@@ -1,3 +1,4 @@
+#!/usr/bin/env php
 <?php
 /**
  * Basic command line test runner for Flexihash.
@@ -10,12 +11,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
-require(dirname(__FILE__).'/../include/init.php');
+require dirname(__DIR__) . '/library/Flexihash/Bootstrap.php';
 
-$basedir = realpath(dirname(__FILE__).'/..');
-flexihash_unshift_include_path(array(
-	"$basedir/lib/simpletest",
-	"$basedir/tests")
+$basedir = realpath(dirname(__DIR__));
+
+set_include_path(
+	"$basedir/vendor" . PATH_SEPARATOR
+	. "$basedir/tests" . PATH_SEPARATOR
+    . get_include_path()
 );
 
 if (in_array('--help', $argv))
@@ -78,18 +81,15 @@ $test->run(new TextReporter());
  */
 function flexihash_glob_recursive($dir, $pattern)
 {
-		$dir = escapeshellcmd($dir);
+    $dir = escapeshellcmd($dir);
 
-		// list of all matching files currently in the directory.
-		$files = glob("$dir/$pattern");
+    // list of all matching files currently in the directory.
+    $files = glob("$dir/$pattern");
 
-		// get a list of all directories in this directory
-		foreach (glob("$dir/*", GLOB_ONLYDIR) as $subdir)
-		{
-				$subfiles = flexihash_glob_recursive($subdir, $pattern);
-				$files = array_merge($files, $subfiles);
-		}
-
-		return $files;
+    // get a list of all directories in this directory
+    foreach (glob("$dir/*", GLOB_ONLYDIR) as $subdir) {
+        $subfiles = flexihash_glob_recursive($subdir, $pattern);
+        $files    = array_merge($files, $subfiles);
+    }
+    return $files;
 }
-

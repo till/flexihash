@@ -1,34 +1,35 @@
+#!/usr/bin/env php
 <?php
 /**
  * Flexihash bundler.
  * Bundles code required to use flexihash into a single PHP file.
  *
- * @author Paul Annesley
+ * @author  Paul Annesley
  * @package Flexihash
- * @licence http://www.opensource.org/licenses/mit-license.php
+ * @license http://www.opensource.org/licenses/mit-license.php
  */
 
 error_reporting(E_ALL);
 ini_set('display_errors', true);
 
-require(dirname(__FILE__).'/../include/init.php');
+require dirname(__DIR__) . '/library/Flexihash/Bootstrap.php';
 
 // ----------------------------------------
 
 // declaration-level dependencies first
 $classFiles = array(
-	'classes/Flexihash.php',
-	'classes/Flexihash/Hasher.php',
-	'classes/Flexihash/Crc32Hasher.php',
-	'classes/Flexihash/Md5Hasher.php',
-	'classes/Flexihash/Exception.php',
+	'library/Flexihash.php',
+	'library/Flexihash/Hasher.php',
+	'library/Flexihash/Crc32Hasher.php',
+	'library/Flexihash/Md5Hasher.php',
+	'library/Flexihash/Exception.php',
 );
 
-$baseDir = realpath(dirname(__FILE__).'/..');
-$classDir = "$baseDir/classes";
-$licenceFile = "$baseDir/LICENCE";
-$buildDir = "$baseDir/build";
-$outFile = "$buildDir/flexihash.php";
+$baseDir     = realpath(dirname(__DIR__));
+$classDir    = "$baseDir/library";
+$licenceFile = "$baseDir/LICENSE";
+$buildDir    = "$baseDir/build";
+$outFile     = "$buildDir/flexihash.php";
 
 // ----------------------------------------
 // set up build environment
@@ -69,8 +70,7 @@ fwrite($fpOut, $docBlock);
 // counters
 $countFiles = 0;
 
-foreach ($classFiles as $classFile)
-{
+foreach ($classFiles as $classFile) {
 	$countFiles++;
 	flexihash_build_log("Adding $classFile...");
 

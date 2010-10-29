@@ -36,9 +36,9 @@ class Flexihash_Bootstrap
     {
         static $base;
         if ($base === null) {
-            $base = dirname(__DIR__);
+            $base = dirname(__DIR__) . '/';
         }
-        if (substr($className, 0, 10) == 'Flexihash_') {
+        if (substr($className, 0, 9) == 'Flexihash') {
             return include $base . str_replace('_', '/', $className) . '.php';
         }
         return false;

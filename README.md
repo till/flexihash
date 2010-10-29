@@ -1,14 +1,17 @@
 Flexihash
 =========
 
-Flexihash is a small PHP library which implements [http://en.wikipedia.org/wiki/Consistent_hashing consistent hashing], which is most useful in distributed caching.  It requires PHP5 and uses [http://simpletest.org/ SimpleTest] for unit testing.
+Flexihash is a small PHP library which implements [consistent hashing][0], which is most useful in distributed caching.  It requires PHP5 and uses [SimpleTest][1] for unit testing.
+
+[0]: http://en.wikipedia.org/wiki/Consistent_hashing
+[1]: http://simpletest.org/
 
 Usage Example
 -------------
 
 <pre>
 &lt;?php
-
+require_once 'Flexihash/Bootstrap.php';
 $hash = new Flexihash();
 
 // bulk add

@@ -45,24 +45,30 @@ class Flexihash
 	 */
 	private $_positionToTargetSorted = false;
 
-	/**
-	 * Constructor
-	 * @param object $hasher Flexihash_Hasher
-	 * @param int $replicas Amount of positions to hash each target to.
-	 */
-	public function __construct(Flexihash_Hasher $hasher = null, $replicas = null)
-	{
-		$this->_hasher = $hasher ? $hasher : new Flexihash_Crc32Hasher();
-		if (!empty($replicas)) {
+    /**
+     * Constructor
+     * @param object $hasher   Flexihash_Hasher
+     * @param int    $replicas Amount of positions to hash each target to.
+     *
+     * @return $this
+     */
+    public function __construct(Flexihash_Hasher $hasher = null, $replicas = null)
+    {
+        if ($hasher === null) {
+            $hasher = new Flexihash_Crc32Hasher();
+        }
+        $this->_hasher = $hasher;
+
+        if ($replicas !== null) {
             $this->_replicas = $replicas;
         }
-	}
+    }
 
 	/**
 	 * Add a target.
      *
 	 * @param string $target
-     * @param float $weight
+     * @param float  $weight
      *
      * @return $this
 	 * @chainable
@@ -88,21 +94,21 @@ class Flexihash
 		return $this;
 	}
 
-	/**
-	 * Add a list of targets.
-	 * @param array $targets
+    /**
+     * Add a list of targets.
+     *
+     * @param array $targets
      * @param float $weight
-	 * @chainable
-	 */
-	public function addTargets($targets, $weight=1)
-	{
-		foreach ($targets as $target)
-		{
-			$this->addTarget($target,$weight);
-		}
-
-		return $this;
-	}
+     *
+     * @chainable
+     */
+    public function addTargets($targets, $weight=1)
+    {
+        foreach ($targets as $target) {
+            $this->addTarget($target,$weight);
+        }
+        return $this;
+    }
 
 	/**
 	 * Remove a target.

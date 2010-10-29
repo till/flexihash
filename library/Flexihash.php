@@ -91,7 +91,7 @@ class Flexihash
 	/**
 	 * Add a list of targets.
 	 * @param array $targets
-         * @param float $weight
+     * @param float $weight
 	 * @chainable
 	 */
 	public function addTargets($targets, $weight=1)

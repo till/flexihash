@@ -3,7 +3,23 @@
  * @category Autoload
  * @package  Flexihash
  * @author   Till Klampaeckel <till@php.net>
- * @license  http:// MIT License
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
+ * @version  Git: $Id$
+ * @link     http://github.com/till/flexihash
+ */
+
+/**
+ * @desc Register autoload!
+ */
+spl_autoload_register(array('Flexihash_Bootstrap', 'autoload'));
+
+/**
+ * A small and lean autoloader! ;-)
+ *
+ * @category Autoload
+ * @package  Flexihash
+ * @author   Till Klampaeckel <till@php.net>
+ * @license  http://www.opensource.org/licenses/mit-license.php MIT License
  * @version  Release: @package_version@
  * @link     http://github.com/till/flexihash
  */

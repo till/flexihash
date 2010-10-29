@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Hashes given values into a sortable fixed size address space.
  *
@@ -9,7 +8,6 @@
  */
 interface Flexihash_Hasher
 {
-
 	/**
 	 * Hashes the given string into a 32bit address space.
 	 *
@@ -20,9 +18,9 @@ interface Flexihash_Hasher
 	 * PHP sort functions using SORT_REGULAR.
 	 *
 	 * @param string
+     *
 	 * @return mixed A sortable format with 0xFFFFFFFF possible values
 	 */
 	public function hash($string);
-
 }
 

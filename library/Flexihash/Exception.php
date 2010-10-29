@@ -1,5 +1,4 @@
 <?php
-
 /**
  * An exception thrown by Flexihash.
  *
@@ -10,4 +9,3 @@
 class Flexihash_Exception extends Exception
 {
 }
-

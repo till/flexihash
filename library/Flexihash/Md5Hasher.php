@@ -7,11 +7,10 @@
  * @package Flexihash
  * @licence http://www.opensource.org/licenses/mit-license.php
  */
-class Flexihash_Md5Hasher
-	implements Flexihash_Hasher
+class Flexihash_Md5Hasher implements Flexihash_Hasher
 {
-
-	/* (non-phpdoc)
+	/**
+     * (non-phpdoc)
 	 * @see Flexihash_Hasher::hash()
 	 */
 	public function hash($string)
